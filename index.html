@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    
+    <title>age difference</title>
+    <style>
+
+        body{
+            background-color: #4158D0;
+        background-image: linear-gradient(43deg, #4158D0 0%, #C850C0 46%, #FFCC70 100%);
+       min-height: 100vh;
+        text-align: center;
+        }
+
+
+        .container{
+            text-align: center;
+            
+            background-color: lightblue;
+            width: 400px;
+            height: 200px;
+            margin: 40px auto;
+            padding: 50px 40px ;
+            border-radius: 5px;
+            font-size: 20px;
+
+        }
+        
+
+        .btn{
+            display: block;
+            margin: 50px auto;
+            padding: 8px 14px;
+            background-image: linear-gradient(to top, rgb(187, 117, 185) 0%, rgb(236, 154, 191) 100%);
+            border-radius: 5px;
+            color: white;
+            cursor: pointer;
+        }
+
+        .age{
+            margin-top: 10px;
+        }
+        .p-1{
+            font-size: 20px;
+        }
+
+    </style>
+</head>
+<body  >
+
+    <h1> Age Difference Calculator</h1>
+    <p id="currentdate" class="p-1"></p>
+    
+
+
+    <div class="container" onmouseover ="liveDT()">
+      
+       <label for="date">Enter Date 1 :</label>
+       <input type="date" id="date"><br><br>
+
+       <label for="date-2">Enter Date 2 :</label>
+       <input type="date" id="date-2">
+       <p id="age"> </p>
+
+       <button type="button" onclick="ageCalculate()"  class="btn"> Claculate </button>
+
+
+
+    </div>
+    <script>
+        function ageCalculate(){
+          const birthdate1 = document.getElementById("date").value;
+          const birthdate2 = document.getElementById("date-2").value;
+          
+
+           const date1 = new Date( birthdate1);
+           const date2= new Date( birthdate2);
+
+          let ageDifference = date1.getFullYear() - date2.getFullYear();
+    //    console.log(ageDifference)
+
+        // const age = document.getElementById("age");
+
+        // age.innerText= ("age :" +ageDifference);
+
+
+        let monthDiff = date1.getMonth() - date2.getMonth();
+
+        // console.log( monthDiff);
+
+        if( monthDiff<0 || (monthDiff=== 0 && date1.getDate() < date2.getDate()) )
+        {
+            ageDifference --;
+        }
+           
+        const age = document.getElementById("age");
+
+          age.innerText= ("agedifference :" +ageDifference);}
+
+
+         function liveDT()
+        {
+            const currentD = new Date();
+            let date = currentD.toLocaleDateString();
+             const currentDate = currentD.getDate();
+             const time = currentD.getHours();
+             const minute = currentD.getMinutes();
+             const second = currentD.getSeconds();
+
+
+
+             console.log(date);
+             const cD = document.getElementById('currentdate');
+             
+
+             cD.innerHTML = ("<b>Date:" +date + " &nbsp; &nbsp;      Time:"+ time+ "."+minute+"."+second);
+            
+            
+        }
+
+             setInterval(liveDT,1000);
+
+
+
+        
+    </script>
+    
+</body>
+</html>
